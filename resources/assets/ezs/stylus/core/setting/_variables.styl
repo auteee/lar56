@@ -1,0 +1,90 @@
+
+// ============================================================
+// Vuetify variables
+// ============================================================
+$body-font-family := 'Roboto', sans-serif
+$font-size-root := 20px
+$line-height-root := 1.5
+
+
+// Transitions
+$transition := {
+  fast-out-slow-in: cubic-bezier(0.4, 0.0, 0.2, 1),     //屏幕内的移动
+  linear-out-slow-in: cubic-bezier(0.0, 0.0, 0.2, 1),   //进出屏幕时的移动。
+  fast-out-linear-in: cubic-bezier(0.4, 0.0, 1, 1),     //进出屏幕时的移动。
+  ease-in-out: cubic-bezier(0.4, 0.0, 0.6, 1),          //退出屏幕时的移动。
+  fast-in-fast-out: cubic-bezier(.25,.8,.25,1),
+  swing: cubic-bezier(.25,.8,.50,1)
+}
+$primary-transition := 0.3s $transition.swing
+$secondary-transition := 0.2s $transition.ease-in-out
+
+
+
+$font-weights := {
+  thin: 100,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  bold: 700,
+  black: 900
+}
+
+// Headings
+// ============================================================
+$headings := {
+  h1: { size: 5.6rem, weight: 300, line-height: 1, letter-spacing: -.04rem },
+  h2: { size: 2.8rem, weight: 400, line-height: 1.35, letter-spacing: -.02rem },
+  h3: { size: 2.25rem, weight: 400, line-height: 48px, letter-spacing: normal },
+  h4: { size: 1.7rem, weight: 400, line-height: 40px, letter-spacing: normal },
+  h5: { size: 1.2rem, weight: 400, line-height: 32px, letter-spacing: normal },
+  h6: { size: 1rem, weight: 500, line-height: 1, letter-spacing: .02rem },
+  subheading: { size: .8rem, weight: 400 },
+  body-2: { size: .7rem, weight: 500 },
+  body-1: { size: .7rem, weight: 400 },
+  caption: { size: .6rem, weight: 400 },
+  button: { size: .7rem, weight: 500 }
+}
+
+// Grid
+// ============================================================
+$grid-breakpoints := {
+  xs: 0
+  sm: 600px
+  md: 960px
+  lg: (1280px - 16px) // Desktop gets a 16dp reduction
+  xl: (1920px - 16px) // https://material.io/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
+}
+
+$grid-gutter = .4rem
+$grid-columns := 12
+$grid-gutters := {
+  xs: ($grid-gutter / 4)    //2px
+  sm: ($grid-gutter / 2)    //4px
+  md: $grid-gutter          //8px
+  lg: ($grid-gutter * 2)    //16px
+  xl: ($grid-gutter * 3)    //24px
+}
+
+$container-max-widths := {
+  sm: $grid-breakpoints.sm
+  md: $grid-breakpoints.md
+  lg: $grid-breakpoints.lg
+  xl: $grid-breakpoints.xl
+}
+
+// Display
+// ============================================================
+$display-breakpoints := {
+  xs-only: "only screen and (max-width: %s)" % ($grid-breakpoints.sm - 1)
+  sm-only: "only screen and (min-width: %s) and (max-width: %s)" % ($grid-breakpoints.sm ($grid-breakpoints.md  - 1))
+  sm-and-down: "only screen and (max-width: %s)" % ($grid-breakpoints.md - 1)
+  sm-and-up: "only screen and (min-width: %s)" % $grid-breakpoints.sm
+  md-only: "only screen and (min-width: %s) and (max-width: %s)" % ($grid-breakpoints.md ($grid-breakpoints.lg  - 1))
+  md-and-down: "only screen and (max-width: %s )" % ($grid-breakpoints.lg - 1)
+  md-and-up: "only screen and (min-width: %s)" % $grid-breakpoints.md
+  lg-only: "only screen and (min-width: %s) and (max-width: %s)" % ($grid-breakpoints.lg ($grid-breakpoints.xl - 1))
+  lg-and-down: "only screen and (max-width: (%s - 1))" % $grid-breakpoints.xl
+  lg-and-up: "only screen and (min-width: %s)" % $grid-breakpoints.lg
+  xl-only: "only screen and (min-width: %s)" % $grid-breakpoints.xl
+}

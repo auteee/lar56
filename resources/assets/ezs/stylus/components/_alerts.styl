@@ -1,0 +1,41 @@
+//var Alerts
+$alert-padding := .5rem
+$alert-border-radius := .1rem
+$alert-font-size :=.8rem
+//$alert-icon-color := rgba($material-light.fg-color, .3)
+$alert-icon-font-size := 1.2rem
+$alert-margin := .2rem
+
+
+.alert,.well
+  color:#424242
+  background-color:#fafafa
+
+//base
+.alert
+  display: flex
+  position: relative
+  padding: $alert-padding
+  border-radius: $alert-border-radius
+  margin:$alert-margin
+  font-size :$alert-font-size
+  transition: $primary-transition
+  justify-content :center
+
+
+  > .content
+    display: inline-flex;
+    flex: 1
+    align-items:center
+  .icon
+    margin-right: $alert-padding
+
+.well
+  position: relative
+  word-wrap:break-word
+  padding: $alert-padding
+  border-radius: $alert-border-radius
+  font-size :$alert-font-size
+  margin-bottom:.25rem
+  elevation(1)
+//        background-color:$alert-closed-bg-color-houer

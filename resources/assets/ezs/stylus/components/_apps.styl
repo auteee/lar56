@@ -1,0 +1,76 @@
+$nav-margin-lr :=.4rem
+$list-boader-color := $background-color.danhei
+$list-boader-left := 1.3rem
+
+.application
+  width:100%
+  height :100%
+
+.app-main
+  position:absolute
+  right: 0
+  bottom: 0
+  overflow : auto
+  transition: .3s all $transition.swing
+
+.app-header
+  width :100%
+  position :relative
+  display :flex
+  transition: .3s $transition.swing
+  will-change: padding-left
+  elevation(4)
+
+.app-header-content
+  width :100%
+  align-items: center
+  display: flex
+  >.btn:first-child
+    margin-left:$nav-margin-lr
+  >.btn:last-child
+    margin-right: $nav-margin-lr
+
+.app-aside-drawer
+  height :100%
+  min-height:100vh
+  position :fixed
+  top: 0
+  left: 0
+  overflow-y:auto
+  overflow-x:hidden
+  will-change: transform
+  transition: .3s $transition.swing
+  z-index: 3
+  &.closed:not(.permanent)
+    &.app-aside-drawer:not(.right)
+      transform: translate3d(-100%, 0, 0)
+    &.right
+      transform: translate3d(100%, 0, 0)
+  &.floated
+    z-index: 6
+    &:not(.closed)
+      elevation(16)
+  &.right
+    left:auto
+    right: 0
+    direction:rtl
+  >nav>ul>li>ul
+    &::before
+      content:''
+      display:block
+      position :absolute
+      top:0
+      bottom:0
+      left:$list-boader-left
+      z-index 1
+      border :solid 1px $list-boader-color
+    >li::before
+      content: "";
+      display: block;
+      position: relative;
+      width: 20px;
+      left:$list-boader-left
+      top:20px;
+      border: 1px solid $list-boader-color
+      z-index: 1;
+

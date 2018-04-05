@@ -1,0 +1,41 @@
+// Badges
+$badge-border-radius := 50%
+$badge-font-size := .7rem
+$badge-w-h-l := 1.2rem      //width,height,line-height
+$badge-top := 0
+$badge-right := 0
+
+
+//base
+.badge
+  display: inline-flex
+  position: relative
+  &-badge
+    display:inline-flex
+    flex:1
+    justify-content: center
+    align-items :center
+    position: absolute
+    top: -($badge-w-h-l / 2)
+    right:-($badge-w-h-l /2 )
+    height: $badge-w-h-l
+    min-width: $badge-w-h-l
+    line-height: $badge-w-h-l
+    border-radius: $badge-border-radius
+    font-size: $badge-font-size
+    transition: $primary-transition
+    .icon
+      font-size: $badge-font-size
+  &.left
+    .badge-badge
+      left: -($badge-w-h-l / 2)
+      width: $badge-w-h-l
+
+  &.bottom
+    .badge-badge
+      bottom: -($badge-w-h-l / 2)
+      top: initial;
+  &.overlap
+    .badge-badge
+      top: -.4rem
+      right: -.4rem

@@ -1,0 +1,100 @@
+$tabs-header-height :=2.4rem
+$tabs-nav-link-padding-lr :=1rem
+$tabs-scoller-margin-lr :=2.4rem
+$tabs-nav-li-min-width :=8rem
+$tabs-nav-li-max-width :=13.2rem
+.tabs
+  overflow: hidden
+  position: relative
+  width: 100%
+
+  &-header
+    position :relative
+    width: 100%
+    height :$tabs-header-height
+    &.centered
+      .tabs-nav-container
+        justify-content: center
+        //@media $display-breakpoints.xs-only
+        //  flex: 1 0 auto
+    .icon.left, .icon.right
+      position: absolute
+      top: 0
+      width: $tabs-scoller-margin-lr
+      height: 100%
+      cursor: pointer
+      user-select: none
+      background-color :inherit
+    .icon.left
+      left: 0
+    .icon.right
+      right: 0
+  &-nav-overlay
+    position: relative
+    overflow-x: auto
+    height: inherit
+    &.scrollable
+      overflow: hidden !important
+  &-nav-container
+    display: flex
+    height: 100%
+    width: 100%
+    position: absolute
+    padding: 0
+    top: 0
+    align-items: center
+    list-style: none
+    will-change: transform
+    transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1)
+
+  &-nav-link
+    height: 100%
+    position :relative
+    display :inline-flex
+    flex:1 1 auto
+    justify-content :center
+    align-items :center
+    padding :0 $tabs-nav-link-padding-lr
+    color: inherit !important
+    text-decoration :none
+    text-overflow: ellipsis
+    white-space: nowrap
+  &-slider
+    height :2px
+    background-color:#fff
+    position: absolute
+    bottom: 0
+    transition: $primary-transition
+
+  &:not(.centered):not(.mobile)
+    .tabs-nav-overlay
+      &.scrollable
+        margin: 0 $tabs-scoller-margin-lr
+
+  &-body
+    position: relative
+    overflow: hidden
+  &-content
+    transition: $primary-transition
+    width: 100%
+
+
+
+
+
+
+
+//&:before
+//content :''
+//display :block
+//height :2px
+//width:100%
+//color :inherit
+//position :absolute
+//left:0
+//bottom:0
+//transform :scale(0)
+//transition: $primary-transition
+//&.tabs-nav-active:before
+//  transform :scale(1)
+

@@ -1,0 +1,100 @@
+
+
+.stepper
+  overflow: hidden
+  position: relative
+  elevation(2)
+  &.is-booted
+    .step-content,.step-wrapper
+      transition: .4s $transition.ease-in-out
+.step
+  &-header
+    align-items: stretch
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    elevation(2)
+    .divider
+      align-self: center
+      margin: 0 -16px
+
+  &-body
+    position: relative
+    overflow: hidden
+
+.step-nav
+  align-items: center
+  display: flex
+  flex-direction: row
+  padding: 24px
+  position: relative
+  &.active
+    .step-nav-label
+      transition: .3s $transition.ease-in-out
+  &.editable
+    cursor: pointer
+  &-step
+    align-items: center
+    border-radius: 50%
+    display: inline-flex
+    font-size: 12px
+    justify-content: center
+    height: 24px
+    margin-right: 8px
+    min-width: 24px
+    width: 24px
+    transition: .3s $transition.fast-in-fast-out
+    .icon
+      font-size: 18px
+
+  &-label
+    align-items: flex-start
+    display: flex
+    flex-direction: column
+    text-align: left
+    small
+      font-size: 12px
+      font-weight: 300
+      text-shadow: none
+
+.step
+  &-content
+    top: initial
+    bottom: 0
+    padding: 16px
+    flex: 1
+    width: 100%
+  &-wrapper
+    overflow: hidden
+    transition: none
+
+////////
+
+.stepper
+  &.vertical
+    padding-bottom: 36px
+
+    .step-content
+      margin: -8px -36px -16px 36px
+      padding: 16px 60px 16px 23px
+      width: auto
+
+    .step-nav
+      padding: 24px 24px 16px
+
+    .step-nav-step
+      margin-right: 12px
+
+    .step-content:not(:last-child)
+      border-left: 1px solid rgba(0,0,0,.4)
+
+@media $display-breakpoints.sm-and-down
+  .stepper:not(.vertical)
+    .step-nav-label
+      display: none
+
+    .step-nav-step
+      margin-right: 0
+
+
+

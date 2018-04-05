@@ -1,0 +1,118 @@
+// Chip
+$chip-border-radius := 1.4rem
+$chip-font-size := .7rem
+$chip-margin := .2rem
+$chip-padding := 0 .6rem
+$chip-height := 1.6rem
+$chip-close-margin := 0 -.6rem 0 .2rem
+
+$chip-margin-offset-left := 0 .2rem 0 -.65rem
+$chip-margin-offset-right := 0 -.65rem 0 .2rem
+
+
+$chip-label-border-radius := $card-border-radius
+$chip-icon-font-size := 20px
+
+$chip-removeable-padding := 0 4px 0 12px
+$chip-outline-background := transparent !important
+$chip-outline-color := $grey.base
+
+
+$chip-small-height := 26px
+$chip-small-font-size := 20px
+$chip-icon-offset := 12px
+$chip-icon-negative-offset := -8px
+
+//them
+.chip
+  background-color :#e0e0e0
+  color:rgba(#000, .87)
+
+.chip
+  align-items: center
+  border-radius: $chip-border-radius
+  border: 1px solid transparent
+  display: inline-flex
+  font-size: $chip-font-size
+  margin: $chip-margin
+  outline: none
+  position: relative
+  transition: $primary-transition
+  vertical-align: middle
+  padding: $chip-padding
+  height: $chip-height
+  &:focus,
+  &.selected
+    &:not(.disabled)
+      border-color: rgba(#000, .13)
+      elevation(2)
+      &:after
+        background: currentColor
+        border-radius: inherit
+        content: ''
+        height: 100%
+        position: absolute
+        top: 0
+        left:0
+        transition: inherit
+        width: 100%
+        pointer-events: none
+        opacity: .13
+  &.label
+    border-radius: 2px
+  .closed
+    display: inline-flex;
+    align-items:center
+    justify-content :center
+    line-height :$alert-closed-w-h-l
+    width:$alert-closed-w-h-l
+    height :$alert-closed-w-h-l
+    font-size :$alert-closed-font-size
+    margin: $chip-close-margin
+    border-radius: 50%
+    cursor: pointer
+    position :relative
+    background-color:transparent !important
+    color: inherit
+    z-index:1
+    user-select :none
+    &:before
+      transition: all ease .5s
+      background-color:$alert-closed-bg-color-houer !important
+      border-radius :50%
+      content:""
+      z-index:-1
+      display :block
+      position :absolute
+      height: 0
+      width: 0
+      top: 50%
+      left: 50%
+    &:hover
+      &:before
+        height: 100%
+        width: 100%
+        top: 0
+        left:0
+  .icon,.avatar
+    border-radius: $chip-border-radius
+    cursor: default
+    display: inline-flex
+    padding: $chip-padding
+    white-space: nowrap
+    z-index: 1
+    height: $chip-height !important
+    min-width: $chip-height
+    width: $chip-height !important
+    color: inherit !important
+  .avatar
+    margin:$chip-margin-offset-left
+    .img
+      width :100%
+      height 100%
+
+  .icon.left
+    margin:$chip-margin-offset-left
+
+  .icon.right
+    margin :$chip-margin-offset-right

@@ -1,0 +1,170 @@
+$divier-background-color :=$background-color.yinhui
+//
+.container
+  flex: 1 1 100%
+  margin: auto
+  padding: $grid-gutters.lg
+  width: 100%
+
+  for size, width in $container-max-widths
+    @media only screen and (min-width: width)
+      max-width: (width * 0.9375) // Credit to bootstrap
+
+  @media $display-breakpoints.xs-only
+    padding: $grid-gutters.xl
+
+  &.fluid
+    max-width: 100%
+
+  &.fill-height
+    align-items: center
+    display: flex
+
+    .row
+      height: 100%
+      flex: 1 1 auto
+
+  &.grid-list
+    for $size, $gutter in $grid-gutters
+      &-{$size}
+        padding: $gutter
+
+        .row
+          .col
+            padding: ($gutter / 2)
+
+        .row:only-child
+          margin: -($gutter / 2)
+
+        .row:not(:only-child)
+          margin: auto -($gutter / 2)
+
+        *:not(:only-child)
+          .row:first-child
+            margin-top: -($gutter / 2)
+
+          .row:last-child
+            margin-bottom: -($gutter / 2)
+
+.row
+  display: flex
+  flex: 1 1 auto
+  flex-wrap: nowrap
+  flex-direction: row
+  &.reverse
+      flex-direction: row-reverse
+  &.wrap
+    flex-wrap: wrap
+  &.column
+    flex-flow:column
+    &.reverse
+      flex-direction: column-reverse
+
+for $size, $width in $grid-breakpoints
+  @media all and (min-width: $width)
+    for $n in (1..$grid-columns)
+      .col.{$size}{$n}
+        flex-basis: ($n / $grid-columns * 100)%
+        max-width: ($n / $grid-columns * 100)%
+
+      .col.order-{$size}{$n}
+        order: $n
+
+    for $n in (0..$grid-columns)
+      .col.offset-{$size}{$n}
+        margin-left: ($n / $grid-columns * 100)%
+
+.col,
+.child-col > *
+  flex: 1 1 auto;
+
+.align
+  &-start
+    align-items: flex-start
+  &-end
+    align-items: flex-end
+  &-center
+    align-items: center
+  &-baseline
+    align-items: baseline
+
+.align-content
+  &-start
+    align-content: flex-start
+  &-end
+    align-content: flex-end
+  &-center
+    align-content: center
+  &-space-between
+    align-content: space-between
+  &-space-around
+    align-content: space-around
+
+.justify
+  &-start
+    justify-content: flex-start
+  &-end
+    justify-content: flex-end
+  &-center
+    justify-content: center
+  &-space-around
+    justify-content: space-around
+  &-space-between
+    justify-content: space-between
+
+.spacer
+  flex-grow: 1 !important
+
+.grow
+  flex-shrink: 0 !important
+
+.shrink
+  flex-grow: 0 !important
+
+.scroll-y
+  overflow-y: auto
+
+.fill-height
+  height: 100%
+
+.hide-overflow
+  overflow: hidden !important
+
+.show-overflow
+  overflow: visible !important
+
+.no-wrap
+  white-space: nowrap
+
+.ellipsis
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+// Display helpers
+.d-flex
+  display: flex !important
+
+.d-inline-flex
+  display: inline-flex !important
+
+.d-block
+  display: block !important
+
+.d-inline-block
+  display: inline-block !important
+
+//divider
+.divider
+  border: none
+  display: block
+  height: 1px
+  min-height: 1px
+  flex: 1
+  width: 100%
+  background-color: $divier-background-color
+  transition: .3s $transition.fast-in-fast-out
+
+  &.inset
+    margin-left: 72px
+    width: calc(100% - 72px)

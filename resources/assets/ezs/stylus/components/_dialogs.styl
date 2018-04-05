@@ -1,0 +1,52 @@
+
+$dialog-border-radius := 2px
+$dialog-margin :=1.2rem
+
+
+.dialog
+  elevation(24)
+  border-radius: $dialog-border-radius
+  margin: $dialog-margin
+  overflow-y: auto
+  pointer-events: auto
+  transition: .3s ease-in-out
+  width: 100%
+  position:relative
+  > .closed
+    position :absolute
+    top:0
+    right:0;
+  &.fullscreen
+    margin 0
+    height 100%
+    position fixed
+    overflow-y: auto
+    top: 0
+    left 0
+
+  &.scrollable
+    display: flex
+
+  &-container
+    align-items: center
+    display: flex
+    height: 100%
+    justify-content: center
+    left: 0
+    pointer-events: none
+    position: fixed
+    top: 0
+    transition: .3s ease-in-out
+    width: 100%
+    z-index: 6
+    outline: none
+
+  &:not(.fullscreen)
+    max-height: 90%
+
+  //&-container
+  //  display: inline-block
+  //  vertical-align: middle
+
+
+

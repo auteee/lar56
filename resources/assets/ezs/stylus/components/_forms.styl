@@ -1,0 +1,218 @@
+
+//base
+$form-group-padding-top :=1rem
+$form-group-font-size :=.8rem
+$form-group-normal-color :=#636c72;
+$form-group-active-color :=$blue.light-blue
+$label-details-active-size := $form-group-font-size - .1
+$form-group-disabled-color :=rgba(0,0,0,.38);
+$multi-line-min-height :=2rem
+//input
+$form-group-input-input-height:=1.2rem
+$form-input-padding-left :=0
+//label
+$form-label-top :=($form-group-padding-top - .2)
+$form-label-top-active := ($form-group-padding-top - $form-label-top)/2
+//details
+$form-group-details-height :=1rem
+$form-group-details-size := $form-group-font-size - .2
+$form-group-details-base-color :=rgba(0,0,0,.42);
+
+$form-icon-min-width :=2rem
+//
+$prefix-margin-right :=.2rem
+
+//checkbox-icon
+$checbox-icon-wh :=2.4rem
+
+//them
+.form-group
+  color: $form-group-normal-color
+
+.form-group
+  display: flex
+  flex: 1 1
+  flex-flow: row wrap
+  align-items:center
+  position: relative
+  width: 100%
+  outline :none
+  font-size :$form-group-font-size
+  padding-top :$form-group-padding-top
+  &.textarea
+    padding:0
+    > label
+      left: .65rem
+    &.focused
+      label
+        left:.65rem
+    > .form-group-input.textarea
+      border: 2px solid currentColor
+    > .details
+      &:after,&:before
+        height :0
+  > label
+    color:$form-group-normal-color
+    pointer-events: none;
+    position: absolute;
+    left: $form-input-padding-left
+    top:$form-label-top
+    transition: bottom 150ms ease, color 150ms, font-size 150ms ease
+  > .form-group-input
+    display: flex
+    flex: 1 1
+    flex-wrap: wrap
+    &.textarea
+      border: 2px solid rgba(0,0,0,.54)
+      padding: 1rem 0 0 .65rem;
+
+    textarea
+      flex: 1 1
+      outline :none
+    input
+      color:rgba(0,0,0,.87)
+      flex: 1;
+      height: $form-group-input-input-height;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      outline :none
+    > .selected
+      display: flex
+      flex: 1 1
+      flex-wrap: wrap
+      min-width:1px
+      min-height: $form-group-input-input-height
+    > .prefix
+      display:flex
+      align-items:flex-end
+      margin-right:$prefix-margin-right
+    > .suffix
+      display:flex
+      align-items:flex-end
+    > .pre-icon
+      min-width:$form-icon-min-width
+    > .icon-cb
+      cursor: pointer;
+  > .details
+    display: flex;
+    flex: 1 0 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding-top :4px
+    min-height :$form-group-details-height
+    font-size: $form-group-details-size
+    color:$form-group-normal-color
+    &:after,&:before
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      width:100%
+      z-index: 1;
+    &:before
+      background-color: $form-group-details-base-color
+      height: 1px;
+    &:after
+      color:$form-group-active-color
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: center center 0;
+      transition: .4s $transition.fast-out-slow-in
+      background-color: currentColor;
+    .counter
+      margin-left:auto
+
+  &.prepend-icon
+    label,
+    .details:before,
+    .details:after
+      left: $form-icon-min-width
+
+  &.error
+    label
+      animation: shake .6s $transition.swing
+  &.focused
+    color:$form-group-active-color
+    .form-group-input
+      caret-color:currentColor
+    label
+      color:currentColor
+      left: $form-input-padding-left
+      top:$form-label-top-active
+      font-size:$label-details-active-size
+    .details
+      color:currentColor
+    .details:after
+      color:currentColor
+      transform: scaleX(1)
+
+  &.has-text
+    label
+      left: $form-input-padding-left
+      top:$form-label-top-active
+      font-size:$label-details-active-size
+
+
+  &.multi-line
+    min-height:$multi-line-min-height
+
+
+  &.disabled
+    .details:before
+      background-color: transparent;
+      background-size: 3px 1px;
+      background-repeat: repeat-x;
+      background-image: linear-gradient(
+        to right,
+        $form-group-details-base-color 0,
+        $form-group-details-base-color 33%,
+        transparent 0
+      )
+
+  &.checkbox,&.radio
+    padding-top :0
+    > .icon
+      cursor: pointer
+      width :$checbox-icon-wh
+      height :$checbox-icon-wh
+      position :absolute
+      left:0
+
+    > label
+      pointer-events:auto
+      cursor: pointer
+      position :relative
+      left:$checbox-icon-wh
+      top:0
+
+  > .checkbox-ripple
+    display :flex
+    width :$checbox-icon-wh
+    height :$checbox-icon-wh
+    position: absolute
+    left: 0
+    border-radius :50%
+    cursor: pointer
+    transform-origin: center center
+
+  &.file
+    >.file-input
+      display :none
+
+
+
+.select-options
+  transition: $primary-transition
+  list-style :none
+  position:absolute
+  top:0
+  left:0
+  background-color :#fff
+  elevation(8)
+.select-list
+  overflow-y :auto
+  > .list
+    padding :0
+

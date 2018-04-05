@@ -1,0 +1,150 @@
+$background-color ={
+  "danlan":       #eafaff,
+  "minghuang":    #ffffed,
+  "danlv":        #eefaee,
+  "caolv":        #cce8cf,
+  "danfen":       #fcefff,
+  "yinhui":       #efefef,
+  "mise":         #f5f5dc,
+  "chase":        #d2b48c,
+  "yinse":        #c0c0c0,
+  "hui5":         #f5f5f5,
+  "huia":         #fafafa,
+  "danhei":       #616161
+}
+
+$baseColor := {
+  primary:    #2196F3,
+  secondary:  #424242,
+  error:      #ff4637,
+  info:       #3de1ad,
+  success:    #4CAF50,
+  warning:    #ffab00,
+  danger:     #ff5722,
+  royal:      #9c27b0,
+  red:        #ff4637,
+  pink:       #ff85af,
+  purple:     #d066e2,
+  indigo:     #3f51b5,
+  blue:       #03a9f4,
+  cyan:       #00bcd4,
+  teal:       #009688,
+  green:      #8bc34a,
+  lime:       #cddc39,
+  yellow:     #ffeb3b,
+  amber:      #ffc107,
+  orange:     #ff9800,
+  brown:      #795548,
+  grey:       #9e9e9e
+}
+
+.bgw-t
+  color :#fff   !important
+  background-color :transparent   !important
+.bgb-t
+  color: #000 !important
+  background-color :transparent   !important
+.bgb-white
+  color: rgba(0,0,0,.87)   !important
+  background-color :#fff   !important
+  boder:none
+.bgw-black
+  color:#fff !important
+  background-color :rgba(0,0,0,.87);
+.white
+  color: #fff !important
+.black
+  color: #000 !important
+
+.circle.white
+  color: #fff !important
+  background-color:transparent  !important
+  &:before
+    background-color:rgba(255,255,255,.3) !important
+//背景色
+bgc-color($color_name,$color_value)
+  .bgc-{$color_name}
+    background-color :$color_value !important
+//背景色白字/黑字 bgwh/bgbh/鼠标滑过颜色 tmwh/tmbh 透明底色白/黑字,鼠标滑过
+//bg /只设置背景色  bgw/bgb 背景色白/黑字 outline/outlineh 边框色，和鼠标滑过
+//circle + 颜色 圆形+颜色
+bg-color($k,$v)
+  .bg-{$k}
+    background-color $v !important
+    border: none  !important
+  .bgw-{$k}
+    color:rgba(255,255,255,.87) !important
+    background-color $v !important
+    border: none  !important
+  .bgb-{$k}
+    color:rgba(0,0,0,.87)
+    background-color $v !important
+    border: none  !important
+  .bgwh-{$k}
+    color:$shades.white !important
+    background-color $v !important
+    border: none  !important
+    &:hover,
+    &:focus
+      color: #fff
+      background-color darken($v,15) !important
+  .bgbh-{$k}
+    color:rgba(0,0,0,.87)
+    background-color $v !important
+    border: none  !important
+    &:hover,
+    &:focus
+      color:#000
+      background-color lighten($v, 15) !important
+  .outline-{$k}
+    color: $v       !important
+    border:1px solid $v !important
+    background-color:#fff !important
+  .outlineh-{$k}
+    color: $v       !important
+    border:1px solid $v   !important
+    background-color:#fff !important
+    &:hover
+      color: $shades.white  !important
+      background-color:$v   !important
+  .tmwh-{$k}
+    color: $v !important
+    background-color:transparent  !important
+    transition:background-color .3s $transition.swing
+    &:hover,
+    &:focus
+      color: #ffffff    !important
+      background-color:$v !important
+  .tmbh-{$k}
+    color: $v !important
+    background-color:transparent  !important
+    transition:background-color .3s $transition.swing
+    &:hover,
+    &:focus
+      color: #000000 !important
+      background-color:$v    !important
+  .circle.{$k}
+    color: $v !important
+    background-color:transparent  !important
+    &:before
+      background-color:$v !important
+
+
+//透明底色背景字
+
+
+text-color(key,val)
+  .{key}
+    color:val !important
+
+for color_name,color_value in $baseColor
+  bg-color(color_name,color_value)
+//
+for color_name,color_value in $baseColor
+  text-color(color_name,color_value)
+
+for $name,$value in $background-color
+  bgc-color($name,$value)
+
+////
+

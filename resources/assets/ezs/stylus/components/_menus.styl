@@ -1,0 +1,53 @@
+
+
+.menu
+  display: inline-block
+  position: relative
+  vertical-align: middle
+  &.disabled
+    .menu-anchor,
+    .menu-anchor > *
+      cursor: default
+      pointer-events: none
+  &-anchor
+    align-items: center
+    cursor: pointer
+    position: relative
+
+  &-list
+    position: absolute
+    display: inline-block
+    border-radius: 2px
+    overflow-y: auto
+    overflow-x: hidden
+    transition: .3s $transition.swing
+    contain: content
+    elevation(8)
+
+.menu-transition
+  &-enter
+    .list-title
+      min-width: 0
+      transition-delay: .4s
+      opacity: 0
+      transform: translateY(-15px)
+      pointer-events: none
+  &-enter-to
+    .list-title
+      pointer-events: auto
+      opacity: 1
+
+  &-leave-to
+    transform: translateY(-10px)
+
+  &-leave-active, &-leave-to
+    pointer-events: none
+
+  &-enter, &-leave-to
+    opacity: 0
+
+  &-enter-to, &-leave
+    opacity: 1
+
+  &-enter-active, &-leave-active
+    transition: all .5s $transition.swing

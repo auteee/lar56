@@ -1,0 +1,15 @@
+//left,right,center,justify  -->l,r,c,j
+
+for $size, $width in $grid-breakpoints
+  @media all and (min-width: $width)
+    .text-{$size}-l
+      text-align: left !important
+
+    .text-{$size}-c
+      text-align: center !important
+      
+    .text-{$size}-r
+      text-align: right !important
+      
+    .text-{$size}-j
+      text-align: justify !important

@@ -1,0 +1,177 @@
+
+//base
+$form-group-font-size :=.8rem
+$form-group-normal-color :=#636c72;
+$form-group-active-color :=$blue.light-blue
+$label-details-active-size := $form-group-font-size - .1
+$form-group-disabled-color :=rgba(0,0,0,.38);
+$multi-line-min-height :=2rem
+//input
+$form-input-padding-top :=1rem
+$form-input-padding-left :=.1rem
+//label
+$form-label-top :=($form-input-padding-top - .2)
+$form-label-top-active := ($form-input-padding-top - $form-label-top)/2
+//details
+$form-group-details-height :=1rem
+$form-group-details-size := $form-group-font-size - .2
+$form-group-details-base-color :=rgba(0,0,0,.42);
+
+$form-icon-min-width :=2rem
+$prefix-label-left :=1rem
+
+//checkbox-icon
+$checbox-icon-wh :=2.4rem
+
+
+.form-group
+  display: flex
+  flex: 1 1
+  flex-flow: row wrap
+  align-items:center
+  position: relative
+  width: 100%
+  outline :none
+  font-size :$form-group-font-size
+  color: $form-group-normal-color
+  > .form-group-input
+    overflow :hidden
+    display: flex
+    flex: 1 1
+    flex-wrap: wrap
+    width: 100%
+    background-color: transparent
+    background-clip: padding-box;
+    outline: none
+    padding-top: $form-input-padding-top
+    padding-left: $form-input-padding-left
+
+  > .prefix
+    display:flex
+    align-items:flex-end
+    ~label
+      left:$prefix-label-left
+  > .prepend-icon
+    padding-top: $form-input-padding-top
+    min-width:$form-icon-min-width
+    ~label,
+    ~.details:before,
+    ~.details:after
+      left: $form-icon-min-width
+  > label
+    pointer-events: none;
+    position: absolute;
+    left: $form-input-padding-left
+    top:$form-label-top
+    transition: bottom 150ms ease, color 150ms, font-size 150ms ease
+
+  > .details
+      display: flex;
+      flex: 1 0 100%;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      padding-top :4px
+      min-height :$form-group-details-height
+      font-size: $form-group-details-size
+      &:after,&:before
+        content: ''
+        position: absolute
+        left: 0
+        top: 0
+        width:100%
+        z-index: 1;
+      &:before
+        background-color: $form-group-details-base-color
+        height: 1px;
+      &:after
+        color:$form-group-active-color
+        height: 2px;
+        transform: scaleX(0);
+        transform-origin: center center 0;
+        transition: .4s $transition.fast-out-slow-in
+        background-color: currentColor;
+      .counter
+        margin-left:auto
+
+  &.error
+    label
+      animation: shake .6s $transition.swing
+  &.focused
+    color:$form-group-active-color
+    .form-group-input
+      caret-color:currentColor
+    label
+      color:currentColor
+      left: $form-input-padding-left
+      top:$form-label-top-active
+      font-size:$label-details-active-size
+    .details:after
+      color:currentColor
+      transform: scaleX(1)
+
+  &.has-text
+    label
+      left: $form-input-padding-left
+      top:$form-label-top-active
+      font-size:$label-details-active-size
+
+  > .suffix
+      display:flex
+      align-items:flex-end
+  &.multi-line
+    min-height:$multi-line-min-height
+  &.disabled
+    color: $form-group-disabled-color  !important
+    .details:before
+      background-color: transparent;
+      background-size: 3px 1px;
+      background-repeat: repeat-x;
+      background-image: linear-gradient(
+        to right,
+        $form-group-details-base-color 0,
+        $form-group-details-base-color 33%,
+        transparent 0
+      )
+
+  &.checkbox,&.radio
+    > .icon
+      cursor: pointer
+      width :$checbox-icon-wh
+      height :$checbox-icon-wh
+
+    > label
+      pointer-events:auto
+      cursor: pointer
+      position :relative
+      left:0
+      top:0
+
+  > .checkbox-ripple
+    display :flex
+    width :$checbox-icon-wh
+    height :$checbox-icon-wh
+    position: absolute
+    left: 0
+    top: 0
+    border-radius :50%
+    cursor: pointer
+
+
+
+  > .form-group-selections
+    display: flex;
+    flex: 1 1
+    flex-wrap: wrap
+    width: 100%
+    outline: none
+    padding-top: $form-input-padding-top
+    padding-left: $form-input-padding-left
+
+  //> .select-options
+  //  transition: $primary-transition
+  //  list-style :none
+  //  position:absolute
+  //  top:0
+  //  left:0
+  //  background-color :#fff

@@ -1,0 +1,27 @@
+/*
+Visibility
+hidden-xs-only - hidden on extra small viewports only
+hidden-sm-and-down - hidden on small viewports and down
+hidden-sm-and-up - hidden on small viewports and up
+hidden-md-only - hidden on medium viewports only
+hidden-md-and-down - hidden on medium viewports and down
+hidden-md-and-up - hidden on medium viewports and up
+hidden-lg-only - hidden on large viewports only
+hidden-lg-and-down - hidden on large viewports and down
+hidden-lg-and-up - hidden on large viewports and up
+hidden-xl-only - hidden on extra large viewports only
+*/
+
+for $size, $query in $display-breakpoints
+  .hidden-{$size}
+    @media $query
+      display: none !important
+
+.overflow-hidden
+  overflow: hidden
+
+.overflow-x-hidden
+  overflow-x: hidden
+
+.overflow-y-hidden
+  overflow-y: hidden

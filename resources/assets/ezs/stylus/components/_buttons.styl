@@ -1,0 +1,268 @@
+//自用变量
+$button-border-radius := 2px
+$button-font-size := .8rem
+$button-font-weight := 500
+$button-margin-y := .2rem
+$button-margin-x := .2rem
+$button-margin := $button-margin-y $button-margin-x
+$button-padding :=.45rem .65rem       //$button-padding := 0 16px
+$button-text-transform := uppercase
+$oval :=2.5rem
+
+$button-small-padding:=.3rem .4rem
+//$button-xs-padding:=.2rem .2rem
+$color-default={
+  "link":$blue.base
+}
+$button-boder-with:=1px
+$button-floating-wh := 2.8rem
+$button-floating-small-wh := 2rem
+$button-floating-large-wh := 3.6rem
+$button-floating-large-icon-size := 2rem
+$button-floating-width := 56px
+//them
+
+.btn
+  background-color :#eee
+  color:rgba(0,0,0,.87)
+  border :none
+
+//
+
+//Base Spec
+.btn
+  display: inline-flex
+  flex: 0 1 auto            //=flex: 0 auto or flex: initial 检索弹性盒模型对象的子元素如何分配空间。
+  vertical-align: middle
+  align-items: center       //横轴居中,
+  justify-content: center   //纵轴
+  user-select: none         //是否允许用户选中文本
+  cursor: pointer
+  line-height: 100%;
+  border-radius: $button-border-radius
+  font-size: $button-font-size
+  font-weight: $button-font-weight
+  padding: $button-padding
+  margin: 0 auto
+  text-transform: $button-text-transform
+  transition: .3s $transition.swing, color 1ms
+  outline :none
+  position:relative
+  text-decoration:none;
+  &.dx
+    transition: $primary-transition
+    i
+      width:inherit
+      height:inherit
+      -webkit-backface-visibility: hidden
+      position: absolute
+      left: 0
+      top: 0
+      &:nth-child(1)
+        opacity: 1
+      &:nth-child(2)
+        opacity: 0
+        transform: rotate(-45deg)
+
+  &.btn-active.dx
+    i:nth-child(1)
+      opacity: 0
+      transform: rotate(45deg)
+    i:nth-child(2)
+      opacity: 1
+      transform: rotate(0)
+
+///////////// color
+//color 定义为全局，因为好几个地方用到　相同数值　，button,card,alert,
+//_colors.styl,primary,secondary,info,success,error,warning,danger
+//bg-,link-,outline-  三选一
+///////////
+//hover-color($k,$v)
+//  .btn.bg-{$k}
+//    &:hover,
+//    &:focus
+//      background-color:rgba($v, 0.8)
+//
+//for $k,$v in $baseColor
+//  hover-color($k,$v)
+//
+//btn-link($k,$v)
+//  .btn.link-{$k}
+//    color:$v
+//    z-index :1
+//    background-color:transparent
+//    transition:background-color .3s $transition.swing
+//    &:hover,
+//    &:focus
+//      color: #ffffff
+//      background-color:$v
+//
+//for $k,$v in $baseColor
+//  btn-link($k,$v)
+
+//btn-outline($k,$v)
+//  .btn.outline-{$k}:not(.raised)
+//    color: $v
+//    border:$button-boder-with solid $v
+//    background-color:transparent
+//    &:hover
+//      color: $shades.white
+//      background-color:$v
+//
+//for $k,$v in $baseColor
+//  btn-outline($k,$v)
+////////
+//raised
+///////
+.btn
+  &.raised
+    will-change: box-shadow
+    elevation(2)
+    &:active
+      elevation(8)
+////////
+//Oval,Square
+///////
+//circle-color($k,$v)
+//  .circle-{$k}
+
+.circle
+  display: inline-flex;
+  align-items:center
+  justify-content :center
+  margin-right: 0
+  border-radius: 50%
+  cursor: pointer
+  position :relative
+  z-index:10
+  user-select :none
+  height:$button-floating-wh
+  width : $button-floating-wh
+  overflow :hidden
+  &:before
+    transition: all ease .5s
+    border-radius :50%
+    content:""
+    z-index:-1
+    display :block
+    position :absolute
+    height: 0
+    width: 0
+    top: 50%
+    left: 50%
+  &:hover
+    color:#fff !important
+    &:before
+      height: 100%
+      width: 100%
+      top: 0
+      left:0
+  &.small
+    height:$button-floating-small-wh
+    width : $button-floating-small-wh
+  &.large
+    height:$button-floating-large-wh
+    width : $button-floating-large-wh
+    .icon
+      font-size:$button-floating-large-icon-size
+
+.btn
+  &.oval
+    border-radius: $oval;
+  &.square
+    border-radius: 0;
+/////////
+//size
+//////////
+.btn
+  &.along
+    display : block
+    width:99%
+    margin :$button-margin-y auto;
+  &.small
+    padding :$button-small-padding
+
+  &.floating
+    border-radius: 50%
+    min-width: 0
+    height: $button-floating-width
+    width: $button-floating-width
+    padding: 0
+    z-index: 100
+    position :absolute
+    elevation(6)
+
+////////////////////////////////
+.over
+  &-l-t
+    left: $grid-gutters.lg
+    top:-($button-floating-width / 2)
+  &-l-b
+    left: $grid-gutters.lg
+    bottom: -($button-floating-width / 2)
+  &-r-t
+    top:-($button-floating-width / 2)
+    right :$grid-gutters.lg
+  &-r-b
+    right :$grid-gutters.lg
+    bottom: -($button-floating-width / 2)
+
+.space
+  &-l-t
+    left:$grid-gutters.lg
+    top: $grid-gutters.lg
+  &-r-t
+    right: $grid-gutters.lg
+    top: $grid-gutters.lg
+  &-l-b
+    left: $grid-gutters.lg
+    bottom: $grid-gutters.lg
+  &-r-b
+    right: $grid-gutters.lg
+    bottom: $grid-gutters.lg
+
+.btn-dial
+  position: absolute
+  .btn
+    margin: .3rem .4rem
+  &.direction
+    &-left,
+    &-right
+      .btn-dial-list
+        height: 100%
+        top: 0
+    &-top,
+    &-bottom
+      .btn-dial-list
+        left: 0
+        width: 100%
+    &-top
+      .btn-dial-list
+        flex-direction: column-reverse
+        bottom: 100%
+    &-right
+      .btn-dial-list
+        flex-direction: row
+        left: 100%
+    &-bottom
+      .btn-dial-list
+        flex-direction: column
+        top: 100%
+    &-left
+      .btn-dial-list
+        flex-direction: row-reverse
+        right: 100%
+
+
+
+.btn-dial-list
+  align-items: center
+  display: flex
+  justify-content: center
+  position: absolute
+  .btn
+    for n in (1..7)
+      &:nth-child({n})
+        transition-delay: "%ss" % (n * .05)
+
+

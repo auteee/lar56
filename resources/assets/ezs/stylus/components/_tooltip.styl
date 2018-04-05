@@ -1,0 +1,19 @@
+$tooltip-color         := #000
+$tooltip-background-color    := #fff
+$tooltip-padding       :=.5rem
+$tooltip-border-radius := 2px
+$tooltip-font-size      :=.8rem
+
+.tooltip
+  background: $tooltip-background-color
+  border-radius: $tooltip-border-radius
+  color: $tooltip-color
+  font-size: 12px
+  display: inline-block
+  padding: 5px 8px
+  position:fixed
+  text-transform: initial
+  transition: .15s $transition.swing
+  width: auto
+  pointer-events: none
+  elevation(6)

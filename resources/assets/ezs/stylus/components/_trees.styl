@@ -1,0 +1,111 @@
+
+//   tree spacing
+
+$tree-left-padding := .8rem
+$tree-right-padding := .8rem
+$tree-top-padding := .4rem
+$tree-bottom-padding := .4rem
+$tree-padding-lr :=.7rem
+$tree-h-action :=2.4rem
+$tree-ulul-padding-left:= $tree-padding-lr + $tree-h-action
+
+$tree-title-font-size := $headings.subheading.size //16px - the mdc scss uses subheading to configure like this
+$tree-title-font-weight := $headings.subheading.weight //400
+$tree-item-single-height := 2rem
+
+//them
+nav
+  &.tree
+    background-color :#fff
+  li a
+    color: $background-color.danhei
+    &.active
+      color:$baseColor.primary
+/////
+
+nav ul
+  width: 100%;
+  margin: 0;
+  font-size: $tree-title-font-size
+  font-weight: $tree-title-font-weight
+  list-style: none;
+  position: relative;
+  transition: all .3s $transition.fast-out-slow-in
+
+  .h-action
+    display: flex
+    min-width: $tree-h-action
+    justify-content: flex-start
+    align-items: center
+  .content
+    text-align: left
+    flex: 1 1 auto
+    overflow: hidden
+    display: flex
+    align-items: flex-start
+    justify-content: center
+    flex-direction: column
+  .action
+    transform: rotate(180deg)
+    transition:all .3s $transition.fast-out-slow-in
+  li a
+    display: flex
+    height: $tree-item-single-height
+    align-items: center
+    padding: 0 $tree-padding-lr
+    text-decoration: none
+    position: relative
+    user-select: none
+    cursor:pointer
+    &:hover
+      background: $background-color.yinse
+
+  ul li > a
+    padding-left: $tree-ulul-padding-left
+
+  ul ul li a
+    padding-left: $tree-ulul-padding-left + .5rem
+
+  ul ul ul li a
+    padding-left: $tree-ulul-padding-left + 1rem
+
+
+
+
+/*
+.tree
+  tree-style-type: none
+  padding: $tree-top-padding 0 $tree-bottom-padding
+  transition: height .3s $transition.fast-out-slow-in
+
+  &-title
+    font-size: $tree-title-font-size
+    font-weight: $tree-title-font-weight
+    display: flex
+    height: $tree-item-single-height
+    text-decoration: none
+    align-items: center
+    padding: 0 $tree-padding-lr
+    margin: 0
+    transition: $primary-transition
+    position: relative
+    user-select: none
+
+    &.link:hover
+      background: $background-color.yinse
+
+    .action
+      display: flex
+      justify-content: flex-start
+      align-items: center
+
+    .content
+      text-align: left
+      flex: 1 1 auto
+      padding-left:$tree-left-padding
+      overflow: hidden
+      display: flex
+      align-items: flex-start
+      justify-content: center
+      flex-direction: column
+*/

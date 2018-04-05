@@ -1,0 +1,104 @@
+
+.form-group.switch
+  > label
+    pointer-events:auto
+    cursor: pointer
+    position: relative
+    left: 0
+    top:0
+  > .switch-container
+    color: inherit
+    position: relative
+    width: 2.4rem
+    > .switch-toggle
+        background-color: currentColor
+        color: inherit
+        position: absolute
+        height: .7rem
+        top: 50%
+        left: .3rem
+        width: 1.7rem
+        border-radius: 8px
+        transform: translateY(-50%)
+        &.active
+          opacity: .5
+    > .switch-ripple
+        border-radius: 50%
+        height: 2.4rem
+        width: 2.4rem
+        cursor: pointer
+        position: absolute
+        transform-origin: center center
+        top: 50%
+        left: 0
+        transform: translate(-10px, -24px)
+        transition: .3s $transition.fast-in-fast-out
+        z-index: 1
+        &:after
+          content: ''
+          background: currentColor
+          position: absolute
+          display: inline-block
+          cursor: pointer
+          width: 20px
+          border-radius: 50%
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          height: 20px
+          elevation(4)
+        &.active
+          transform: translate(8px, -24px)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //> .switch-ripple
+  //  position :relative
+  //  left :.3rem
+  //  content: "";
+  //  display: inline-block;
+  //  width: 30px;
+  //  height: 15px;
+  //  background-color: rgba(80,80,80,.7);
+  //  border-radius: 15px;
+  //  transition: background .3s ease;
+  //  &:before
+  //    content: "";
+  //    display: inline-block;
+  //    width: 20px;
+  //    height: 20px;
+  //    background-color: #f1f1f1;
+  //    border-radius: 20px;
+  //    position: relative;
+  //    left: 0
+  //    top: -2px;
+  //    transition: .3s $transition.fast-in-fast-out
+  //    elevation(4)
+  //  &.active
+  //    background-color:currentColor
+  //    opacity: .5
+  //    &:before
+  //      z-index:1
+  //      background-color:currentColor
+  //      transform: translate(12px, 0)
+

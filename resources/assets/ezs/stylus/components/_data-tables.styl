@@ -1,0 +1,60 @@
+
+
+.datatable
+  thead
+    th.column.sortable
+      cursor: pointer
+
+      i
+        font-size: 16px
+        vertical-align: sub
+        display: inline-block
+        opacity: 0
+        transition: .3s $transition.swing
+
+      &:hover
+        i
+          opacity: .6
+
+      &.active
+        transform: none
+
+        i
+          opacity: 1
+
+        &.desc
+          i
+            transform: rotate(-180deg)
+
+
+.datatable-actions
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  font-size: 12px
+  flex-wrap: wrap-reverse
+  &-select
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-right: 14px
+    .form-group
+      min-width:90px
+      margin: 13px 0 13px 34px
+  &-controls
+    display: flex
+    align-items: center
+    min-height: 48px
+    &.btn
+      color: inherit
+  &-pagination
+    display: block
+    text-align: center
+    margin: 0 32px 0 24px
+
+.table-toolbar
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  padding: 16px
+

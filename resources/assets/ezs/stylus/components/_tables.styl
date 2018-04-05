@@ -1,0 +1,96 @@
+
+$td-th-first-padding := 0 1.2rem
+$tr-height :=2.8rem
+$td-th-height :=2.4rem
+$th-font-size := .8rem
+$td-font-size := .7rem
+
+//them
+table
+  background-color :#fff
+  color:rgba(0,0,0,.87)
+  tr
+    &:first-child
+      border-bottom: 1px solid rgba(0,0,0,.12)
+  th
+    color: rgba(0,0,0,.54)
+
+  tbody
+    tr
+      &:not(:last-child)
+        border-bottom: 1px solid rgba(0,0,0,.12)
+
+      &[active]
+        background: #eee
+
+      &:hover:not(.datatable__expand-row)
+        background: #eee
+  tfoot
+    tr
+      border-top: 1px solid rgba(0,0,0,.12)
+//.table
+//  &__overflow
+//    width: 100%
+//    overflow-x: auto
+//    overflow-y: hidden
+
+table.table
+  border-radius: 2px
+  border-collapse: collapse
+  border-spacing: 0
+  width: 100%
+  max-width: 100%
+
+  thead, tbody
+    td, th
+      &:not(:nth-child(1)), &:first-child
+        padding: $td-th-first-padding
+
+  thead
+    tr
+      height: $tr-height
+
+    th
+      outline :none
+      font-weight: 500
+      font-size: $th-font-size
+      transition: .3s $transition.swing
+      white-space: nowrap
+      user-select: none
+
+      &.sortable
+        pointer-events: auto
+
+      > div
+        width: 100%
+
+  tbody
+    tr
+      transition: background $primary-transition
+      will-change: background
+    td, th
+      height: $td-th-height
+    td
+      font-weight: 400
+      font-size: $td-font-size
+
+  tfoot
+    tr
+      height: $td-th-height
+      td
+        padding: $td-th-first-padding
+
+  .input-group--selection-controls
+    padding: 0
+
+    .input-group__details
+      display: none
+
+    &.checkbox
+      .icon
+        left: 50%
+        transform: translateX(-50%)
+
+      .input-group--selection-controls__ripple
+        left: 50%
+        transform: translate(-50%, -50%)

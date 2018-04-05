@@ -1,0 +1,137 @@
+/** Lists */
+//  list fonts and weights */
+
+//
+//$list-action-text-font-size := .6rem //this is for the stacked actions
+//$list-action-text-font-color := $grey.base
+//
+//$subheader-height-font-size := ($list-tile-font-size - 2px) //14px
+//$subheader-font-weight := $font-weights.medium //500
+//
+//
+////   list spacing
+//
+//$list-item-right-margin := 56px
+//$list-item-left-padding := 72px
+//
+//$list-item-avatar-single-height := 56px
+//
+//$subheader-inset-margin := $list-item-right-margin
+//
+////   list dense overrides */
+//$list-item-dense-font-size := ($list-tile-font-size - 3px) //13px
+//$subheader-dense-font-size := $list-item-dense-font-size
+//$list-item-dense-icon-font-size := 22px
+//
+//$list-item-dense-top-padding := $list-top-padding / 2
+//$list-item-dense-single-height := $list-item-single-height - 8px //40px
+//$list-item-dense-double-height := $list-item-double-height - 12px //60px
+//$list-item-dense-triple-height := $list-item-triple-height - 12px //76px
+//
+//$list-item-dense-avatar-single-height := $list-item-single-height //48px the dense concept was to take avatars to a normal single item height
+//$list-item-dense-avatar-height := 38px
+//
+//$list-dense-subheader-height := $list-item-dense-single-height
+//$list-dense-subheader-group-height := $list-dense-subheader-height //the subheader under a group menu
+
+//   list spacing
+$list-padding-tb := .8rem
+$list-left-padding := .8rem
+$list-right-padding := .8rem
+$list-top-padding := .4rem
+$list-bottom-padding := .4rem
+
+$list-h-action :=2.4rem
+
+$list-title-font-size := $headings.subheading.size //16px - the mdc scss uses subheading to configure like this
+$list-title-font-weight := $headings.subheading.weight //400
+$list-desc-font-size := ($list-title-font-size - .1rem) //14px
+
+$list-item-padding-lr :=.4rem
+$list-content-padding-lr :=.7rem
+
+$list-item-single-height := 2.8rem    //48px
+$list-item-double-height := 3.6rem    //72px
+$list-item-triple-height := 4.4rem    //88px
+$list-title-height :=1.2rem
+////////////
+//
+
+.list
+  list-style :none
+  transition: height .3s $transition.fast-out-slow-in
+  padding : $list-padding-tb 0
+  background-color :#fff
+  &-header
+    display :flex
+    align-items: center
+    padding :0 .8rem
+    height :$list-item-single-height
+  &-item
+    display :flex
+    flex:1 1 auto
+    flex-flow: row nowrap
+    align-items: center
+    position: relative
+    padding:0 $list-item-padding-lr
+    font-size: $list-title-font-size
+    font-weight: $list-title-font-weight
+    min-height :$list-item-single-height
+    cursor: pointer
+    &:hover
+      background-color :$background-color.yinhui
+    > .icon
+      width :2.4rem
+      height:2.4rem
+  &-avatar
+    align-content:center
+
+  &-content
+    height :$list-item-single-height
+    padding:0 $list-content-padding-lr
+    text-align: left
+    flex: 1 1 auto
+    overflow: hidden
+    display: flex
+    align-items: flex-start
+    justify-content: center
+    flex-direction: column
+  &-title,&-desc
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    width: 100%
+  &-title
+    transition: $primary-transition
+    height: $list-title-height
+    line-height: $list-title-height
+    position: relative
+  &-desc
+    font-size: $list-desc-font-size
+
+  &-action
+    justify-content:flex-end
+
+  &.two-line
+    .list-content
+      height :$list-item-double-height
+  &.three-line
+    .list-content
+      height :$list-item-triple-height
+    .list-desc
+      white-space: initial
+      -webkit-line-clamp: 2
+      -webkit-box-orient: vertical
+      display: -webkit-box
+  &.multi-line
+    .list-item
+      height :100%
+    .list-content
+      height:100%
+    .list-desc
+      display: -webkit-box
+      white-space :normal
+.divider-inster
+  margin-left :3rem
+  width :calc(100% - 3rem);
+

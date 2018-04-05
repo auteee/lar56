@@ -1,0 +1,32 @@
+
+$sys-padding-lr :=.4rem
+.system-bar
+  align-items: center
+  display: flex
+  font-size: $headings.body-2.size
+  font-weight: $headings.body-2.weight
+  padding: 0 $sys-padding-lr
+
+  .icon
+    font-size: $headings.subheading.size
+
+  &.fixed, &.absolute
+    left: 0
+    top: 0
+    width: 100%
+    z-index: 3
+
+  &.fixed
+    position: fixed
+
+  &.absolute
+    position: absolute
+
+  &.status
+    .icon
+      margin-right: .2rem
+
+  &.window
+    .icon
+      font-size: $headings.h6.size
+      margin-right: .4rem

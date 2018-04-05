@@ -1,0 +1,21 @@
+{
+  "e-btn":[{
+    "PROPS":[
+      {"名称":"cs","默认值":"undefined","类型":"String","说明":""},
+      {"名称":"disabled","默认值":"undefined","类型":"String","说明":""},
+      {"名称":"ripple","默认值":"undefined","类型":"String","说明":""},
+      {"名称":"tag","默认值":"undefined","类型":"String","说明":""},
+      {"名称":"href","默认值":"undefined","类型":"String","说明":""},
+      {"名称":"target","默认值":"undefined","类型":"String","说明":""},
+      {"名称":"to","默认值":"undefined","类型":"String","说明":""}
+    ]
+  },{
+    "SLOTS":[
+      {"名称":"cs","默认值":"undefined","说明":""}
+    ]
+  },{
+    "EVENTS":[
+      {"名称":"cs","默认值":"undefined","说明":""}
+    ]
+  }]
+}

@@ -1,0 +1,104 @@
+talbe
+    thead
+        tr th
+    tbody
+        tr td
+    tfoot
+
+
+格式化每个组件配置　formatConfig 对每个组件进行配置
+
+
+select
+本身，选项，
+选项带搜索，
+
+
+用到icon的 e-checkbox
+
+snackbar 加上计时器　closed 内置
+
+**css 统一制定，大小[big,lage,x-lage]，颜色[color,bg-color,bgh-color,bgc-color]，形状[squear,circle,圆角]
+**动画，icon,
+
+button
+
+ .btn color effect base/link/outline
+            icon
+            size
+            Disabled
+
+ {
+    box-shadow,border,color,background-color,background-img,
+
+ }
+    icon {left,top,bottom,right}
+
+icon 错误时如何显示
+
+//groupbtn,dropdown,
+
+input-group
+  autoheight,password
+
+alert
+  动画
+
+badges 跟据使用情况在定
+
+
+top :   padding-left:0/300/50
+left:   width:0/300/50  top:0|56
+
+l-tb,
+
+1,  左 ,上下   opend                       cloesed
+top:    padding-left:-300  height:56    top:    padding-left:0 height:56
+left:   width:300  top:0                left:   width:0 top: 0
+center: top:56, left:-300               center: left:0 top:56
+
+2,  上,左右
+top:    padding-left:0  height:56       top:    padding-left:0  height:56
+left:   width:300       top:56          left:   width:0         top: 56
+center: left:-300       top:56          center: left:0          top:56
+
+3, 上,左右
+
+top:    padding-left:0  height:56       top:    padding-left:0      height:56
+left:   width:300       top:56          left:   width:40            top: 56
+center: left:-300       top:56          center: left:-40            top:56
+
+
+opened/closed,fixed/unfixed,
+
+
+(isOpened isFloated ) isActive showOverlay isMobile     //click-outside onResize
+
+isOpened || is Floated
+
+
+eapps
+  EApp,EAppAside,EAppHeader,EAppMain,EAppFooter
+
+elayout
+
+
+eforms
+  Einput,echeck,eselect,eradio,efile
+
+  e-title,e-text,e-body,e-footer,
+
+  icon,card,toolbar/nav,alert,list,tree,pagination,progress,
+
+Elist
+
+   props: lists:Array  树形菜单 (id,pid,name,open,[children]) //not
+
+Edh
+
+  animate 对第三方 animate.css 进行了封装，
+
+Eapps => 换成E-laout  layout-top[side,center,footer]
+
+
+Eforms -->  e-input,e-check,e-radio,e-select,
