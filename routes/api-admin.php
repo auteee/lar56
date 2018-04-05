@@ -6,7 +6,16 @@
  * Time: 上午12:47
  * Desc:
  */
+//Route::middleware('auth.admin:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
+Route::group(['namespace' => 'adminApi','prefix' => 'api/admin','middleware' =>['auth.admin:api']],function (){
+    //Route::get('index', 'IndexController@showLogin');
+    Route::get('user',function (Request $request){
+        return $request->user();
+    });
+});
 
 
 

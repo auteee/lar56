@@ -1,15 +1,14 @@
 import Maskable from '../../mixins/maskable'
-import Validatable from '../../mixins/validatable'
+
 import InputGroup from '../../mixins/inputGroup'
 
 export default {
     name:'e-input',
-    mixins: [Maskable,Validatable,InputGroup],
+    mixins: [Maskable,InputGroup],
     data(){
         return {
             yOverflow:false,
             isFocused: false,
-            lazyValue: this.value,
             badInput: false,
             inputHeight : null,
             internalChange: false,
@@ -54,12 +53,7 @@ export default {
                 }
             }
         },
-        hasInput () {
-            return this.lazyValue != null &&
-                this.lazyValue.toString().length > 0 ||
-                this.badInput ||
-                ['time', 'date', 'datetime-local', 'week', 'month'].includes(this.type)
-        },
+
         count () {
             if(!this.maxlength) return;
             let inputLength=0,maxLength;

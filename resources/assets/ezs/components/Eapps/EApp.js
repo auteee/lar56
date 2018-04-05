@@ -25,7 +25,7 @@ export default {
         // from the load helper utility
         runCallbacks () {
             // For unit tests
-            if (!document._loadCallbacks) return
+            if (!document._loadCallbacks) return;
 
             while (document._loadCallbacks.length) {
                 document._loadCallbacks.pop()()

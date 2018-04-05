@@ -20,8 +20,9 @@ export default {
                 this.inputValue.forEach((item, i) => {
                     children.push(genSelection(item, i < length - 1, i));
                 });
-            }else if(typeof this.inputValue ==='object'){
-                let v= this.inputValue.hasOwnProperty('title')?this.inputValue.title:this.inputValue.value;
+            }else if(typeof this.selectedItem ==='object' && this.selectedItem!==null){
+
+                let v= this.selectedItem.hasOwnProperty('title')?this.selectedItem.title:this.selectedItem.value;
                 children.push(genSelection(v));
             }else{
                 children.push(genSelection(this.inputValue));

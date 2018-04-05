@@ -177,7 +177,7 @@ export default {
                 ? this.rowsLength
                 : this.computedPagination.page * this.getPage
         },
-        //
+        //搜索
         hasSearch(){
             return typeof this.lazySearch !== 'undefined' &&
                 this.lazySearch !== null;
@@ -188,7 +188,7 @@ export default {
             }
             return this.totalRows || this.rows.length
         },
-        //
+        //选择
         selected () {
             const selected = [];
             for (let index = 0; index < this.value.length; index++) {
@@ -211,6 +211,7 @@ export default {
         },
         //获取tableRows选项，
         tableRows () {
+
             if(this.lazySearch==null || this.lazySearch===''){
                 return this.rows;
             }

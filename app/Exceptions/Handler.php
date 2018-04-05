@@ -3,7 +3,9 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -36,6 +38,9 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+
+        //dd($exception);
+
         parent::report($exception);
     }
 
@@ -48,6 +53,43 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        //对422错误进行json处理以便于 ajax 可以获取 数据
+        //$exception->getMessage() 默认 -->'The given data was invalid'
+        //e-cw error-cuowu 中英文提示
+        if ($request->expectsJson()) {
+            //这段代码参考 parent::render 提前对 json数据进行了处理
+            if($exception instanceof ValidationException){
+                return response()->json([
+                    'message' => empty($exception->getMessage()) ? '^_^出错了' : 'e-cw:无效数据',
+                    'errors' => $exception->errors(),
+                    'success'=>0,
+                    'status_code'=>$exception->status
+                ]);
+            }
+        }
+
+
         return parent::render($request, $exception);
     }
+
+    /**
+     * //将登陆者转到相应页面 未登录异常处理-->来源
+     * @param \Illuminate\Http\Request $request
+     * @param AuthenticationException $exception
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
+    public function Unauthenticated($request, AuthenticationException $exception){
+
+        //appserve中加入api报头
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+
+        if(in_array('admin', $exception->guards())) {
+            return redirect()->guest('/admin/login');
+        }
+        return redirect()->guest('login');
+    }
+
+    //public function ValidationException($request, )
 }

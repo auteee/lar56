@@ -6,6 +6,7 @@ import EFile from  './EFile'
 import ESwitch from './ESwitch'
 import ERadioGroup from './ERadioGroup'
 import ERadio from './ERadio'
+import EForm from './EForm'
 
 export { ECheckbox }
 
@@ -22,5 +23,6 @@ Eforms.install=function (Vue){
     Vue.component(ESelect.name,ESelect);
     Vue.component(EFile.name,EFile);
     Vue.component(ESwitch.name,ESwitch);
+    Vue.component(EForm.name,EForm);
 };
 export default Eforms

@@ -34,6 +34,7 @@ export default {
           //search
           lazySearch:null,
           searchTimeout: null,
+          selectedItem:null,
       }
     },
     props:{
@@ -66,12 +67,14 @@ export default {
         }
     },
     computed:{
-        hasInput(){
+        hasText(){
+            if(this.inputValue===0) return true;
             if(this.inputValue){
                 return this.inputValue.toString().length > 0
             }
             return false;
         },
+        //options 样式
         optionstyle(){
             return {
                 //maxHeight:this.maxHeight
@@ -141,7 +144,8 @@ export default {
                 transformOrigin: this.origin,
                 zIndex: this.zIndex || this.activeZIndex
             }
-        }
+        },
+
     },
     watch:{
         isActive (val) {
@@ -149,9 +153,17 @@ export default {
                 this.blur();
             }
         },
+        inputValue(val){
+            this.genSelectedItems();
+            val !== this.value && this.$emit('input', val);
+        },
+        options(){  //解决挂载时opintos 显示项有变化
+            this.genSelectedItems();
+        }
     },
     mounted () {
         //组件已经销毁，刚返回
+        //this.genSelectedItems();
         if (this._isDestroyed) return;
         this.changeParentEl(this.$refs.popself,(this.eTarget || document.body))
     },
@@ -159,6 +171,15 @@ export default {
         this.killGhostElement(this.$refs.popself)
     },
     methods:{
+        //初始化选中项
+        genSelectedItems (val = this.inputValue) {
+
+            if(this.multiple) return;
+            let selected = this.options.filter(i => {
+                return i.value===this.inputValue
+            });
+            this.selectedItem=selected[0];
+        },
         //显示弹出层
         openPopList () {
             this.checkForWindow();
@@ -183,7 +204,8 @@ export default {
         selectItem (item) {
             if (!this.multiple) {
                 //let v=item.value?item.value:item.title;
-                this.$emit('change', item.value);
+                //this.selectedItem=item; //显示值
+                this.$emit('change', item.value); //真实值
                 this.isActive=false;
             } else {
                 let input = this.inputValue;

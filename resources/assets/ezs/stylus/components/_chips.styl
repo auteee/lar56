@@ -60,40 +60,6 @@ $chip-icon-negative-offset := -8px
         opacity: .13
   &.label
     border-radius: 2px
-  .closed
-    display: inline-flex;
-    align-items:center
-    justify-content :center
-    line-height :$alert-closed-w-h-l
-    width:$alert-closed-w-h-l
-    height :$alert-closed-w-h-l
-    font-size :$alert-closed-font-size
-    margin: $chip-close-margin
-    border-radius: 50%
-    cursor: pointer
-    position :relative
-    background-color:transparent !important
-    color: inherit
-    z-index:1
-    user-select :none
-    &:before
-      transition: all ease .5s
-      background-color:$alert-closed-bg-color-houer !important
-      border-radius :50%
-      content:""
-      z-index:-1
-      display :block
-      position :absolute
-      height: 0
-      width: 0
-      top: 50%
-      left: 50%
-    &:hover
-      &:before
-        height: 100%
-        width: 100%
-        top: 0
-        left:0
   .icon,.avatar
     border-radius: $chip-border-radius
     cursor: default

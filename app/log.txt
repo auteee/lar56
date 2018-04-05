@@ -1,0 +1,118 @@
+
+建立 routes/api-amdin.php
+contig/auth.php -> 添加api-admin
+kernel.php ->
+
+
+php artisan make:auth
+
+php artisan make:controller  admin/LoginController
+
+php artisan make:model Models/admin/Admin -m            //admin表
+
+php artisan make:migration create_admin_permission_table //权限/菜单表
+
+php artisan make:migration create_admin_roles_table       //角色表
+
+php artisan make:migration create_admin_role_id_table       //admin-角色-id关联表
+
+php artisan make:migration create_admin_role_permission_table   //权限-角色关联表
+
+php artisan make:model Models/admin/Permission
+
+php artisan make:model Models/admin/Roles
+
+php artisan make:seeder AdminsTableSeeder
+
+php artisan migrate
+
+php artisan db:seed
+
+php artisan make:controller admin/IndexController
+
+php artisan make:middleware AdminAuthMiddleware
+在 app\Http\Kernel.php 中注册：
+protected $routeMiddleware = [
+    ......
+    'auth.admin' => \App\Http\Middleware\AdminAuthMiddleware::class,
+    ......
+];
+
+//文件存储
+php artisan storage:link
+//登录错误时返回json的中间件（未用），实现用在了Providers/AppServiceProvider.php 服务中，二者都可以
+//-->addAcceptableJsonType
+php artisan make:middleware AddJsonToAcceptMiddleware
+
+//安装passport
+composer require laravel/passport
+php artisan migrate
+//安装passport 扩展，实现多用户api接口
+composer require smartins/passport-multiauth
+php artisan migrate
+//重新生成数据库并填充
+php artisan migrate:refresh --seed
+//初始化passport
+php artisan passport:install
+//(不太明白,如果不用的话passport认证过不去，还未增仔细了解
+php artisan config:cache
+
+//守得云开见月明 之 api登录 admin
+php artisan make:controller apiAdmin/LoginController  //登录
+php artisan make:controller apiAdmin/IndexController //用户信息，菜单信息，权限信息
+
+//权限页
+php artisan make:controller apiAdmin/PermissionController   //create/show/store/edit...
+php artisan make:request PermissionRequest                  //request数据验证
+
+
+
+
+//守得云开见月明 之 api登录
+//passport api 登录建设 admin
+php artisan make:controller api/ApiContorller
+//修改LoginController 继承 ApiContorller
+php artisan make:controller api/LoginController
+
+
+
+
+
+
+//composer 中添加      "files":[
+                          "app/Helpers/functions.php"
+                      ]
+composer dump-auto
+
+
+//多用户登录，新建一个PasspordAdminServiceProvider来实现我们自己的PasswordGrant,
+//别忘了添加到config/app.php的providers配置段中
+php artisan make:provider PassportAdminServiceProvider
+
+
+//权限菜单填充器
+php artisan make:seed PermissionSeeder
+php artisan make:controller apiAdmin/PermissionController
+
+
+git使用
+
+id_rsa  id_rsa.pub  known_hosts  known_hosts.old
+
+不小心将git远程地址配错了，再次配置提示以下错误：
+fatal: 远程 origin 已经存在。
+此时只需要将远程配置删除，重新添加即可；
+git remote rm origin
+git remote add origin https://github.com/auteee/lar56.git
+
+//配置用户名和用户邮箱
+git config --global user.name
+git config --global user.email
+
+
+
+
+
+
+
+

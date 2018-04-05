@@ -1,11 +1,13 @@
 import EIcon from "../components/Eicon/EIcon";
-
+import Validatable from './validatable'
 export default {
     components: { EIcon },
+    mixins:[Validatable],
     data () {
         return {
             tabFocused: false,
             internalTabIndex: null,
+            lazyValue: this.value,
         }
     },
     props: {
@@ -31,13 +33,19 @@ export default {
                 'form-group':true,
                 'prepend-icon':this.prependIcon,
                 'error': this.hasError,
-                'has-text': this.hasInput,
+                'has-text': this.hasText,
                 'focused': this.isFocused,
                 'disabled':this.disabled,
                 'multi-line': this.multiLine,
                 [this.cs]:this.cs
             };
             return classes;
+        },
+        hasText () {
+            return this.lazyValue != null &&
+                this.lazyValue.toString().length > 0 ||
+                this.badInput ||
+                ['time', 'date', 'datetime-local', 'week', 'month'].includes(this.type)
         },
     },
     methods:{
@@ -104,8 +112,8 @@ export default {
         },
         genMessages () {
             let messages = [];
-            if (this.errorBucket && this.errorBucket.length) {
-                messages = this.errorBucket.map(v => this.genError(v))
+            if (this.validations.length) {
+                messages = this.validations.map(v => this.genError(v))
             }else if (this.isHint && this.hint || this.hint && this.isFocused) {
                 messages = [this.genHint()]
             } else{

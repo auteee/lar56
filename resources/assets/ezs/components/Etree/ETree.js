@@ -39,7 +39,7 @@ export default {
             const that=this;
             return trees.map(function(item){
                 //that.treeId[item['id']]=item.pid;
-                if(item.children){
+                if(item.children && item.children.length>0){
                     let link=that.genAlink(item);
                     const clasess={'open':item.open};
                     return that.$createElement('li',

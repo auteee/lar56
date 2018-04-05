@@ -33,14 +33,19 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,                //csrf_token
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-
         'api' => [
             'throttle:60,1',
             'bindings',
+            'custom-provider',
         ],
+            //多用户password 登录
+        'custom-provider' => [
+            \SMartins\PassportMultiauth\Http\Middleware\AddCustomProvider::class,
+            \SMartins\PassportMultiauth\Http\Middleware\ConfigAccessTokenCustomProvider::class,
+        ]
     ];
 
     /**
@@ -58,5 +63,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        //自定义admin登录中间件
+        'auth.admin' => \App\Http\Middleware\AdminAuthMiddleware::class,
     ];
 }
