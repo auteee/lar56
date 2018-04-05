@@ -109,7 +109,7 @@ git remote add origin https://github.com/auteee/lar56.git
 git config --global user.name
 git config --global user.email
 
-git stash pop 
+git stash pop
 
 
 
